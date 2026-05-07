@@ -1,6 +1,9 @@
 # Extract .m3u8 Stream URLs with Selenium + GitHub Actions  
 (*Works on websites which don't need login/authentication*)  
 
+
+##(This project is no longer maintained, might not work as expected)
+
 This tool automates the process of extracting `.m3u8` URLs from live stream pages.  
 It uses **Selenium + Chrome DevTools Protocol (CDP)** in a GitHub Actions workflow to capture stream URLs directly from the given page.  
 You can then play these extracted URLs with your preferred HLS Player (e.g., VLC).  
