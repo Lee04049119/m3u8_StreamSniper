@@ -6,7 +6,7 @@ on:
       url:
         description: "The URL to scrape for m3u8 links (override default)"
         required: true
-        default: "https://news.abplive.com/live-tv"
+        default: "https://watch.tonton.com.my/live/8tv"
       max_wait:
         description: "Max seconds the script should wait for m3u8 (optional)"
         required: false
