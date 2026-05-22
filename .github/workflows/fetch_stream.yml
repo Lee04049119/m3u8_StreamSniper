@@ -57,7 +57,10 @@ jobs:
             echo "requirements.txt not found — installing minimal deps"
             pip install selenium webdriver-manager
           fi
-
+      - name: Run update8TV script first
+        run: |
+          echo "Running update8TV.py..."
+          python update8TV.py 2>&1 | tee update8TV_output.txt
       - name: Run Selenium script (🟢CLICK HERE TO VIEW RESULTS)
         env:
           TARGET_URL: ${{ github.event.inputs.url }}
