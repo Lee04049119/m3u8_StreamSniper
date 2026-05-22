@@ -8,9 +8,7 @@ import subprocess
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+
 
 try:
     # webdriver_manager is optional fallback
@@ -135,52 +133,8 @@ def main():
             print(f"{now()} Warning: page.get raised: {e}")
 
         # small initial sleep to let players init (but avoid long sleeps)
-        time.sleep(8.0)
-# Click Sign In
-        print(f"{now()} Opening login")
-        wait = WebDriverWait(driver, MAX_WAIT)
-        wait.until(EC.presence_of_element_located((By.XPATH, "//*[contains(text(),'Sign In')]"))).click()
-        time.sleep(8)
+        time.sleep(1.0)
 
-        # Switch popup
-        handles = driver.window_handles
-        if len(handles) > 1:
-            driver.switch_to.window(handles[-1])
-
-        time.sleep(5)
-
-        # Login
-        driver.find_element(By.CSS_SELECTOR, 'input[type="text"]').send_keys(EMAIL)
-        driver.find_element(By.CSS_SELECTOR, 'input[type="password"]').send_keys(PASSWORD)
-
-        time.sleep(1)
-        driver.find_element(By.ID, "submitBtn").click()
-
-        print(f"{now()} Logged in")
-        time.sleep(10)
-
-        # Back to main window
-        driver.switch_to.window(handles[0])
-
-        # Open live page
-        print(f"{now()} Opening stream")
-        driver.get(target_url)
-        time.sleep(10)
-
-        # Try force play
-        try:
-            driver.execute_script("""
-                let v = document.querySelector('video');
-                if (v) {
-                    v.muted = true;
-                    v.play();
-                }
-            """)
-            print(f"{now()} Triggered video play")
-        except Exception:
-            pass
-
-        time.sleep(5)
         
         found = set()
         processed = set()
