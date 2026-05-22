@@ -16,8 +16,7 @@ try:
     _HAS_WDM = True
 except Exception:
     _HAS_WDM = False
-EMAIL = "jianbiao0404@gmail.com"
-PASSWORD = "biao9119"
+
 DEFAULT_URL = "https://watch.tonton.com.my/live/8tv"
 M3U8_RE = re.compile(r'https?://[^\s\'"]+\.m3u8[^\s\'"]*', re.IGNORECASE)
 
@@ -133,7 +132,7 @@ def main():
             print(f"{now()} Warning: page.get raised: {e}")
 
         # small initial sleep to let players init (but avoid long sleeps)
-        time.sleep(1.0)
+        time.sleep(8.0)
 
         
         found = set()
